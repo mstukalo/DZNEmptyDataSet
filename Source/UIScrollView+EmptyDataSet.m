@@ -674,7 +674,7 @@ NSString *dzn_implementationKey(id target, SEL selector)
 
 #pragma mark - UIGestureRecognizerDelegate Methods
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+- (BOOL)gestureRecognizer:(__unused UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
     return ![touch.view isKindOfClass:[UIControl class]];
 }
 
@@ -730,7 +730,7 @@ NSString *dzn_implementationKey(id target, SEL selector)
 {
     self.frame = self.superview.bounds;
     
-    void(^fadeInBlock)(void) = ^{_contentView.alpha = 1.0;};
+    void(^fadeInBlock)(void) = ^{self->_contentView.alpha = 1.0;};
     
     if (self.fadeInOnDisplay) {
         [UIView animateWithDuration:0.25
